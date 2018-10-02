@@ -1,0 +1,44 @@
+/ start l-contents
+.l-container.u-clear
+  / start l-main
+  %main.l-main.js-main
+    .l-main-block
+    / error message
+    - if flash.alert
+      %div{:id => "error_explanation"}
+        %ul
+          %li= flash.alert
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name), class: "form") do |f|
+      .field
+        = f.label :username, "USER ID", class: "form-title"
+        = f.text_field :username, autofocus: true, class: "input input-text"
+      .field
+        = f.label :password, "PASSWORD", class: "form-title"
+        = f.password_field :password, autocomplete: "current-password", class: "input input-text"
+      .actions
+        %label.form-button{:for => "submit"}
+          .button
+            -# %p.button-text{type: :submit} Login
+            = f.button "Login", type: :submit, class: "button-text"
+        = f.submit "Login"
+
+
+    -# %form.form{:action => "post"}
+    -#   %label.form-title{:for => "user-id"} USER ID
+    -#   %input#user-id.input.input-text{:type => "text"}
+    -#   %label.form-title{:for => "password"} PASSWORD
+    -#   %input#password.input.input-text{:type => "text"}/
+    -#   %label.form-button{:for => "submit"}
+    -#     .button
+    -#       %p.button-text Login
+    -#   %input#submit.input.input-submit{:type => "submit"}/
+
+
+  / end l-main
+/ end l-contents
+
+
+/ footer ここから
+= render partial: "/devise/partials/footer"
+/ footer ここまで
