@@ -1,0 +1,46 @@
+!!!
+/[if lt IE 9]
+  <html lang="ja" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#">
+/ [if gt IE 9]><!
+%html.no-js{:lang => "ja", :prefix => "og: http://ogp.me/ns#"}
+  / <![endif]
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %meta{:content => "sample text,sample tex", :name => "description"}/
+    %meta{:content => "word1,word2,word3", :name => "keywords"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0", :name => "viewport"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "", :property => "og:title"}/
+    %meta{:content => "sample text,sample tex", :property => "og:description"}/
+    %meta{:content => "", :property => "og:url"}/
+    %meta{:content => "", :property => "og:site_name"}/
+    %meta{:content => "blog", :property => "og:type"}/
+    %meta{:content => "", :property => "fb:admins"}/
+    %meta{:content => "assets/images/common/ogp.png", :property => "og:image"}/
+    %meta{:content => "", :name => "apple-mobile-web-app-title"}/
+    %link{:href => "assets/images/common/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "images/common/apple-touch-icon-precomposed.png", :rel => "apple-touch-icon-precomposed"}/
+
+    %title Ligarticles
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+
+  %body#js-body#fb-root
+  %noscript.for-no-js Javascriptを有効にしてください。
+  .for-old お使いのOS・ブラウザでは、本サイトを適切に閲覧できない可能性があります。最新のブラウザをご利用ください。
+  %input#js-base-url{:type => "hidden", :value => "./"}/
+  .l-wrap.js-wrap
+    / start public header
+    - if devise_controller?
+      = render partial: "/articles/partials/admin/header"
+    - else
+      = render partial: "/articles/partials/header"
+    / end public header
+
+    = render partial: "/articles/partials/nav"
+    = yield
