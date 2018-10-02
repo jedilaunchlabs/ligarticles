@@ -1,0 +1,30 @@
+/ start l-contents
+.l-container.u-clear
+  / start l-main
+  %main.l-main.js-main
+    .l-main-block
+    .page-number
+      Page
+      %span 1/4
+    .archive
+      %ul.archive-list
+        - @articles.each do |article|
+          %li.archive-item
+            %article.card
+              %a.card-link{:href => article_path(article.id)}
+                %img.card-image{:alt => "", :src => asset_path("sample1.jpg")}/
+                .card-bottom
+                  %h1.card-title= article.title
+                  %time.card-date{:datetime => article.created_at.strftime('%F')}
+                    = article.created_at.strftime("%d %b, %Y")
+    .paginate
+      %a.paginate-prev.is-disable{:href => "#"}
+        %span.paginate-prev-arrow
+      %a.paginate-number.is-current{:href => "#"} 1
+      %a.paginate-number{:href => "#"} 2
+      %a.paginate-number{:href => "#"} 3
+      %a.paginate-number{:href => "#"} 4
+      %a.paginate-next{:href => "#"}
+        %span.paginate-next-arrow
+  / end l-main
+/ end l-contents

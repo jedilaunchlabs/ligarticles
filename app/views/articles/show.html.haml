@@ -1,0 +1,33 @@
+-# <!-- <p id="notice"><%= notice %></p>
+-#
+-# <p>
+-#   <strong>Title:</strong>
+-#   <%= @article.title %>
+-# </p>
+-#
+-# <p>
+-#   <strong>Description:</strong>
+-#   <%= @article.description %>
+-# </p>
+-#
+-# <%= link_to 'Edit', edit_article_path(@article) %> |
+-# <%= link_to 'Back', articles_path %> -->
+
+
+/ start l-main
+%main.l-main.js-main
+  .l-main-block
+  .single
+    %img.single-image{:alt => "", :src => asset_path("sample1.jpg")}/
+    .l-container.u-clear
+      %h1.single-title
+        = @article.title
+      %time.single-date{:datetime => @article.created_at.strftime('%F')}
+        = @article.created_at.strftime("%d %b, %Y")
+      %p.single-desc
+        = @article.description
+      %a.single-button{href: articles_path}      
+        .button
+          %p.button-text Top
+/ end l-main
+/ end l-contents
