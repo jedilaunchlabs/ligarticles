@@ -1,0 +1,17 @@
+/ start l-contents
+.l-container.u-clear
+  / start l-main
+  %main.l-main.js-main
+    .l-main-block
+    %a.l-main-button{:href => new_article_path}
+      .button
+        %p.button-text New Article
+    %ul.archive.archive-admin
+      - @articles.each do |article|
+        %li.archive-item
+          %a.post-article{:href => article_path(article)}
+            %time.post-article-date{:datetime => article.created_at.strftime('%F')}
+              = article.created_at.strftime("%d %b, %Y")
+            %h1.post-article-title= article.title
+  / end l-main
+/ end l-contents

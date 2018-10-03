@@ -3,7 +3,7 @@
   / start l-main
   %main.l-main.js-main
     .l-main-block
-    / error message
+    / display error message
     - if flash.alert
       %div{:id => "error_explanation"}
         %ul
@@ -19,26 +19,6 @@
       .actions
         %label.form-button{:for => "submit"}
           .button
-            -# %p.button-text{type: :submit} Login
             = f.button "Login", type: :submit, class: "button-text"
-        = f.submit "Login"
-
-
-    -# %form.form{:action => "post"}
-    -#   %label.form-title{:for => "user-id"} USER ID
-    -#   %input#user-id.input.input-text{:type => "text"}
-    -#   %label.form-title{:for => "password"} PASSWORD
-    -#   %input#password.input.input-text{:type => "text"}/
-    -#   %label.form-button{:for => "submit"}
-    -#     .button
-    -#       %p.button-text Login
-    -#   %input#submit.input.input-submit{:type => "submit"}/
-
-
   / end l-main
 / end l-contents
-
-
-/ footer ここから
-= render partial: "/devise/partials/footer"
-/ footer ここまで
