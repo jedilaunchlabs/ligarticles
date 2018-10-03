@@ -3,24 +3,31 @@
   / start l-main
   %main.l-main.js-main
     .l-main-block
-    %form.form{:action => "post"}
+
+    = form_for @article, html: {class: "form"} do |f|
       %label.form-title{:for => "image"}
         EYE CATCH IMAGE
         .form-file.u-clear
           %span.form-file-button UPLOAD
-      %input#image.input.input-image{:type => "file"}/
-      %label.form-title{:for => "title"} TITLE
+      = f.file_field :image, id: "image", class: "input input-image"
+      = f.label :title, class: "form-title"
       .form-body
-        %input#title.input.input-text{:type => "text", name: "title"}/
-      %label.form-title{:for => "contents"} CONTENTS
+        = f.text_field :title, class: "input input-text", pattern: "[A-Za-z0-9 _.,!\x22;'/$]*"
+      = f.label :description, class: "form-title"
       .form-textarea
-        %textarea#inquiry.input.input-contents{:cols => "30", :name => "description", :rows => "10"}
+        = f.text_area :description, id: "inquiry", cols: "30", rows: "10", class: "input input-contents"
+
+      / display error message
+      - if @article.errors.present?
+        .div#error_explanation Error
+
       %label.form-button{:for => "submit"}
         .button
-          %p.button-text Submit
-      %input#submit.input.input-submit{:type => "submit"}/
+          = f.button "Submit", type: :submit, class: "button-text", id: "submitArticle"
       %a.form-button{:href => dashboard_path}
         .button
-          %p.button-text Back
+          = f.button "Back", type: :submit, class: "button-text"
+
+
   / end l-main
 / end l-contents

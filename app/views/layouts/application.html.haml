@@ -36,7 +36,7 @@
   %input#js-base-url{:type => "hidden", :value => "./"}/
   .l-wrap.js-wrap
     / admin header
-    - if devise_controller? || action_name == "dashboard" || action_name == "new"
+    - if devise_controller? ||  ["dashboard", "new", "create"].include?(action_name)
       = render partial: "/admins/partials/header"
     - else # public header
       = render partial: "/articles/partials/header"
@@ -47,7 +47,7 @@
 
 
     / admin footer
-    - if devise_controller? || action_name == "dashboard" || action_name == "new"
+    - if devise_controller? ||  ["dashboard", "new", "create"].include?(action_name)
       = render partial: "/admins/partials/footer"
     - else # public footer
       = render partial: "/articles/partials/footer"

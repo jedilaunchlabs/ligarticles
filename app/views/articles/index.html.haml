@@ -9,7 +9,7 @@
           %li.archive-item
             %article.card
               %a.card-link{:href => article_path(article.id)}
-                %img.card-image{:alt => "", :src => asset_path("sample1.jpg")}/
+                %img.card-image{:alt => "", :src => article.image.attached? ? url_for(article.image) : asset_path("sample1.jpg")}/
                 .card-bottom
                   %h1.card-title= article.title
                   %time.card-date{:datetime => article.created_at.strftime('%F')}
