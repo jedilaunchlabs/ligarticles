@@ -15,7 +15,7 @@
                   %time.card-date{:datetime => article.created_at.strftime('%F')}
                     = article.created_at.strftime("%d %b, %Y")
     - if @articles.count > 5
-      %a.archive-button{:href => "#"}
+      %a.archive-button{:href => archive_path}
         .button
           %p.button-text More
   / end l-main
