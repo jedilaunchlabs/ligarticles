@@ -12,7 +12,7 @@
       = f.file_field :image, id: "image", class: "input input-image"
       = f.label :title, class: "form-title"
       .form-body
-        = f.text_field :title, class: "input input-text"
+        = f.text_field :title, class: "input input-text", pattern: "[A-Za-z0-9 _.,!\x22;'/$]*"
       = f.label :description, class: "form-title"
       .form-textarea
         = f.text_area :description, id: "inquiry", cols: "30", rows: "10", class: "input input-contents"
