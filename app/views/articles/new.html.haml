@@ -1,0 +1,26 @@
+/ start l-contents
+.l-container.u-clear
+  / start l-main
+  %main.l-main.js-main
+    .l-main-block
+    %form.form{:action => "post"}
+      %label.form-title{:for => "image"}
+        EYE CATCH IMAGE
+        .form-file.u-clear
+          %span.form-file-button UPLOAD
+      %input#image.input.input-image{:type => "file"}/
+      %label.form-title{:for => "title"} TITLE
+      .form-body
+        %input#title.input.input-text{:type => "text", name: "title"}/
+      %label.form-title{:for => "contents"} CONTENTS
+      .form-textarea
+        %textarea#inquiry.input.input-contents{:cols => "30", :name => "description", :rows => "10"}
+      %label.form-button{:for => "submit"}
+        .button
+          %p.button-text Submit
+      %input#submit.input.input-submit{:type => "submit"}/
+      %a.form-button{:href => dashboard_path}
+        .button
+          %p.button-text Back
+  / end l-main
+/ end l-contents

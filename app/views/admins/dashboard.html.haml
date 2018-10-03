@@ -3,29 +3,15 @@
   / start l-main
   %main.l-main.js-main
     .l-main-block
-    %a.l-main-button{:href => "#"}
+    %a.l-main-button{:href => new_article_path}
       .button
         %p.button-text New Article
     %ul.archive.archive-admin
-      %li.archive-item
-        %a.post-article{:href => "#"}
-          %time.post-article-date{:datetime => "2016-9-16"} 16 Sep, 2016
-          %h1.post-article-title The Best Wii U Games of 2016
-      %li.archive-item
-        %a.post-article{:href => "#"}
-          %time.post-article-date{:datetime => "2016-9-16"} 16 Sep, 2016
-          %h1.post-article-title VOTING FOR THE PEOPLE'S CHOICE BEST WII U GAME OF 2016!
-      %li.archive-item
-        %a.post-article{:href => "#"}
-          %time.post-article-date{:datetime => "2016-9-16"} 16 Sep, 2016
-          %h1.post-article-title Gears of War film to rise like a Fenix thanksto Universal
-      %li.archive-item
-        %a.post-article{:href => "#"}
-          %time.post-article-date{:datetime => "2016-9-16"} 16 Sep, 2016
-          %h1.post-article-title Trailer Roundup - October 5, 2016
-      %li.archive-item
-        %a.post-article{:href => "#"}
-          %time.post-article-date{:datetime => "2016-9-16"} 16 Sep, 2016
-          %h1.post-article-title PlayStation VR: A Hardcore Console Gamer’s Perspective
+      - @articles.each do |article|
+        %li.archive-item
+          %a.post-article{:href => article_path(article)}
+            %time.post-article-date{:datetime => article.created_at.strftime('%F')}
+              = article.created_at.strftime("%d %b, %Y")
+            %h1.post-article-title= article.title
   / end l-main
 / end l-contents
