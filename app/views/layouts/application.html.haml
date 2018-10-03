@@ -35,12 +35,19 @@
   .for-old お使いのOS・ブラウザでは、本サイトを適切に閲覧できない可能性があります。最新のブラウザをご利用ください。
   %input#js-base-url{:type => "hidden", :value => "./"}/
   .l-wrap.js-wrap
-    / start public header
-    - if devise_controller?
-      = render partial: "/articles/partials/admin/header"
-    - else
+    / admin header
+    - if devise_controller? ||  ["dashboard", "new", "create"].include?(action_name)
+      = render partial: "/admins/partials/header"
+    - else # public header
       = render partial: "/articles/partials/header"
     / end public header
 
     = render partial: "/articles/partials/nav"
     = yield
+
+
+    / admin footer
+    - if devise_controller? ||  ["dashboard", "new", "create"].include?(action_name)
+      = render partial: "/admins/partials/footer"
+    - else # public footer
+      = render partial: "/articles/partials/footer"

@@ -1,0 +1,33 @@
+/ start l-contents
+.l-container.u-clear
+  / start l-main
+  %main.l-main.js-main
+    .l-main-block
+
+    = form_for @article, html: {class: "form"} do |f|
+      %label.form-title{:for => "image"}
+        EYE CATCH IMAGE
+        .form-file.u-clear
+          %span.form-file-button UPLOAD
+      = f.file_field :image, id: "image", class: "input input-image"
+      = f.label :title, class: "form-title"
+      .form-body
+        = f.text_field :title, class: "input input-text"
+      = f.label :description, class: "form-title"
+      .form-textarea
+        = f.text_area :description, id: "inquiry", cols: "30", rows: "10", class: "input input-contents"
+
+      / display error message
+      - if @article.errors.present?
+        .div#error_explanation Error
+
+      %label.form-button{:for => "submit"}
+        .button
+          = f.button "Submit", type: :submit, class: "button-text"
+      %a.form-button{:href => dashboard_path}
+        .button
+          = f.button "Back", type: :submit, class: "button-text"
+
+
+  / end l-main
+/ end l-contents

@@ -18,7 +18,7 @@
 %main.l-main.js-main
   .l-main-block
   .single
-    %img.single-image{:alt => "", :src => asset_path("sample1.jpg")}/
+    %img.single-image{:alt => "", :src => @article.image.attached? ? url_for(@article.image) : asset_path("sample1.jpg")}/
     .l-container.u-clear
       %h1.single-title
         = @article.title
