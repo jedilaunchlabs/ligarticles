@@ -64,7 +64,11 @@ class ArticlesController < ApplicationController
 
 
   def archive
-    @articles = Article.all.order("created_at DESC").limit(5)
+    @articles = Article.with_attached_image.order("created_at DESC").page(params[:page])
+    
+    params[:page] = "1" if params[:page].nil?
+    @current_page = params[:page]
+    @total_pages = (Article.count + Article::PER_PAGE - 1) / Article::PER_PAGE
   end
 
 

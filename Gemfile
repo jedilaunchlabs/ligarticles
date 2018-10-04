@@ -40,7 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.2'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'active_storage_validations', '~> 0.1'
-
+gem 'kaminari', '1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

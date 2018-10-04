@@ -35,3 +35,9 @@ en:
       article:
         title: "TITLE"
         description: "DESCRIPTION"
+  views:
+    pagination:
+      first: ''
+      previous: '<span class="paginate-prev-arrow"></span>'
+      next: '<span class="paginate-next-arrow"></span>'
+      last: ''

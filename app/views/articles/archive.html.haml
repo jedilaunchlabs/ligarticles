@@ -5,7 +5,7 @@
     .l-main-block
     .page-number
       Page
-      %span 1/4
+      %span= "#{@current_page}/#{@total_pages}"
     .archive
       %ul.archive-list
         - @articles.each do |article|
@@ -17,14 +17,7 @@
                   %h1.card-title= article.title
                   %time.card-date{:datetime => article.created_at.strftime('%F')}
                     = article.created_at.strftime("%d %b, %Y")
-    .paginate
-      %a.paginate-prev.is-disable{:href => "#"}
-        %span.paginate-prev-arrow
-      %a.paginate-number.is-current{:href => "#"} 1
-      %a.paginate-number{:href => "#"} 2
-      %a.paginate-number{:href => "#"} 3
-      %a.paginate-number{:href => "#"} 4
-      %a.paginate-next{:href => "#"}
-        %span.paginate-next-arrow
-  / end l-main
+
+    = paginate @articles
+    / end l-main
 / end l-contents
