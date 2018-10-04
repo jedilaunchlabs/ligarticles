@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.with_attached_image.order("created_at DESC")
+    @articles = Article.all.with_attached_image.order("created_at DESC").limit(5)
   end
 
   # GET /articles/1
@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
 
 
   def archive
-    @articles = Article.all
+    @articles = Article.all.order("created_at DESC").limit(5)
   end
 
 
