@@ -8,7 +8,7 @@
         = @article.title
       %time.single-date{:datetime => @article.created_at.strftime('%F')}
         = @article.created_at.strftime("%d %b, %Y")
-      %p.single-desc
+      %p.single-unstyled-desc
         = @article.description
       %a.single-button{href: articles_path}
         .button
